@@ -8,7 +8,15 @@ class ArticlesController < ApplicationController
     @article.save
     redirect_to @article
   end
+
   def show
     @article = Article.find(params[:id])
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to new_article_path, status: :see_other
   end
 end
